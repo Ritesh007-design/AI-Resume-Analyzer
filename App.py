@@ -2,15 +2,11 @@ import streamlit as st
 import PyPDF2
 from groq import Groq
 
-# ---------------- PAGE SETTINGS ---------------- #
-
 st.set_page_config(
     page_title="AI Resume Analyzer",
     page_icon="📄",
     layout="centered"
 )
-
-# ---------------- CUSTOM CSS ---------------- #
 
 st.markdown("""
 <style>
@@ -39,7 +35,6 @@ h1 {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- TITLE ---------------- #
 
 st.title("📄 AI Resume Analyzer for Freshers")
 st.markdown("### Developed by Taneti Ritesh")
@@ -50,7 +45,6 @@ st.caption(
 
 st.markdown("---")
 
-# ---------------- SIDEBAR ---------------- #
 
 st.sidebar.title("👨‍💻 About Developer")
 
@@ -64,7 +58,6 @@ Project:
 AI Resume Analyzer
 """)
 
-# ---------------- GROQ API ---------------- #
 
 try:
     client = Groq(
@@ -74,7 +67,6 @@ try:
 except Exception as e:
     st.error(f"❌ API Error: {e}")
 
-# ---------------- PDF TEXT EXTRACTION ---------------- #
 
 def extract_text(pdf_file):
 
@@ -91,7 +83,6 @@ def extract_text(pdf_file):
 
     return text
 
-# ---------------- ATS SCORE ---------------- #
 
 def calculate_ats_score(resume_text, job_role):
 
@@ -156,7 +147,6 @@ def calculate_ats_score(resume_text, job_role):
 
     return score, found_skills, missing_skills
 
-# ---------------- AI ANALYSIS ---------------- #
 
 def analyze_resume(resume_text, job_role):
 
@@ -205,7 +195,6 @@ Resume:
 
         return f"❌ Error Generating AI Suggestions: {e}"
 
-# ---------------- ROLE SELECTION ---------------- #
 
 job_role = st.selectbox(
     "🎯 Select Target Role",
@@ -219,14 +208,12 @@ job_role = st.selectbox(
     ]
 )
 
-# ---------------- FILE UPLOAD ---------------- #
 
 uploaded_file = st.file_uploader(
     "📂 Upload Your Resume PDF",
     type=["pdf"]
 )
 
-# ---------------- MAIN LOGIC ---------------- #
 
 if uploaded_file is not None:
 
@@ -278,7 +265,6 @@ if uploaded_file is not None:
 
             st.write(result)
 
-# ---------------- FOOTER ---------------- #
 
 st.markdown("---")
 
