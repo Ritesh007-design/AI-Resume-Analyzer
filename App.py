@@ -68,7 +68,7 @@ AI Resume Analyzer
 
 try:
     client = Groq(
-        api_key="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"
+        api_key="YOUR API KEY"
     )
 
 except Exception as e:
